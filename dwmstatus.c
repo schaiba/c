@@ -12,9 +12,6 @@
 
 #include <X11/Xlib.h>
 
-char *tzargentina = "America/Buenos_Aires";
-char *tzutc = "UTC";
-char *tzberlin = "Europe/Berlin";
 char *tzbucharest = "Europe/Bucharest";
 
 static Display *dpy;
@@ -109,8 +106,6 @@ main(void)
 
 	for (;;sleep(10)) {
 		avgs = loadavg();
-		tmar = mktimes("%H:%M", tzargentina);
-		tmutc = mktimes("%H:%M", tzutc);
 //		tmbuc = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzbucharest);
 		tmbuc = mktimes("%d %b %Y %H:%M", tzbucharest);
 
@@ -119,8 +114,6 @@ main(void)
 		status = smprintf("%s", tmbuc);
 		setstatus(status);
 		free(avgs);
-		free(tmar);
-		free(tmutc);
 		free(tmbuc);
 		free(status);
 	}
